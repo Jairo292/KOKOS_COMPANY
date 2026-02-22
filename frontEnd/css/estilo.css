@@ -22,6 +22,19 @@
   --color-input-bg: #f3f3f5;
 
   --radius-md: 10px;
+   --bg: var(--color-bg);
+  --text: var(--color-text);
+  --primary: var(--color-primary);
+  --muted: var(--color-muted-text);
+
+  --primary-2: #0e2668;    
+  --primary-20: #1d4ed8;
+  --border: var(--color-border);
+  --container: 1100px;
+
+  --radius: 18px;
+  --shadow: 0 18px 50px rgba(0,0,0,.10);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,.08);
 
   --font-size-base: 16px;
   --font-weight-normal: 400;
@@ -55,12 +68,21 @@ body{
   display:flex;
   align-items:center;
   justify-content:space-between;
+    padding: 0 24px; 
 }
+
 .company{
   display:flex;
   align-items:center;
   gap:10px;
   font-weight: 800;
+  margin-right: 20px;
+}
+
+.company-name{
+  font-size: 26px;   
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .btn{
@@ -74,7 +96,7 @@ body{
   border: 1px solid transparent;
 }
 .btn-primary{
-  background: var(--primary);
+  background: var(--primary-20);
   color:#fff;
   box-shadow: 0 10px 20px rgba(37,99,235,.18);
 }
@@ -102,14 +124,14 @@ body{
   margin: 0 0 18px;
   letter-spacing: -0.02em;
 }
-.accent{ color: var(--primary); }
+.accent{ color: var(--primary-20); }
 .parrafo-header{
   color: var(--muted);
   max-width: 52ch;
   line-height: 1.6;
   margin: 0 0 22px;
 }
-.header-actions{
+.header2actions{
   display:flex;
   gap:14px;
   margin-bottom: 22px;
@@ -131,7 +153,7 @@ body{
 }
 
 .panel-card{
-  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  background: linear-gradient(135deg, #0a215f, #1267f0);
   border-radius: 22px;
   padding: 22px;
   box-shadow: var(--shadow);
