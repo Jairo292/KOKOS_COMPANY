@@ -12,7 +12,7 @@
          <div class="company">
       <span class="company-name">KOKOS</span>
     </div>
-       <a class="btn btn-primary" href="#login">Iniciar Sesión</a>
+       <a class="btn btn-primary" href="#login"  id="openAuth">Iniciar Sesión</a>
         </nav> 
     </header>
 
@@ -68,7 +68,7 @@
         </div>
       </aside>
 
-            </header
+    </header>
               </div>
               </section>
             
@@ -124,19 +124,84 @@
 </section>
 
     </main>
-    <footer class="foooter">
-   <div class="container footer-grid">
-    <div>
-      <p class="footer-brand">KOKOS</p>
-      <p class="footer-text">La plataforma de gestión para agentes de seguros.</p>
-    </div>
-    <nav class="footer-links">
-        <a href="#">Contacto</a>
-    </nav>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">KOKOS</p>
+        <p class="footer-text">La plataforma de gestión para agentes de seguros.</p>
+      </div>
 
     </div>
-      <div class="footer-bottom"> © 2026 KOKOS. Todos los derechos reservados.  </div>
+
+    <div class="footer-bottom">© 2026 KOKOS. Todos los derechos reservados.</div>
+  </div>
 </footer>
 
+<div class="modal" id="authModal">
+  <div class="modal__backdrop" data-close></div>
+   <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="modal__close" type="button" aria-label="Cerrar" data-close>✕</button>
+
+    <header class="modal__header">
+      <h2 id="authTitle">Bienvenido a KOKOS</h2>
+      <p class="modal__sub">Inicia sesión o crea tu cuenta.</p>
+    </header>
+
+     <div class="tabs">
+      <button class="tab is-active" type="button" data-tab="login">Iniciar sesión</button>
+      <button class="tab" type="button" data-tab="register">Crear cuenta</button>
+    </div>
+
+     <form class="form is-active" id="loginForm" data-panel="login">
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="email" placeholder="tu@correo.com">
+      </label>
+
+      <label class="field">
+        <span>Contraseña</span>
+        <input type="password" name="password" required autocomplete="current-password" placeholder="••••••••">
+      </label>
+
+      <button class="btn btn-primary w-100" type="submit" id="enter-btn">Entrar</button>
+
+      <p class="form__hint">
+        ¿No tienes cuenta?
+        <button type="button" class="link" data-switch="register">Regístrate</button>
+      </p>
+    </form>
+
+     <form class="form" id="registerForm" data-panel="register">
+      <label class="field">
+        <span>Nombre</span>
+        <input type="text" name="name" required autocomplete="name" placeholder="Tu nombre">
+      </label>
+
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="email" placeholder="tu@correo.com">
+      </label>
+
+      <label class="field">
+        <span>Contraseña</span>
+        <input type="password" name="password" required minlength="8" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
+      </label>
+
+      <label class="field">
+        <span>Confirmar contraseña</span>
+        <input type="password" name="password2" required minlength="8" autocomplete="new-password" placeholder="Repite tu contraseña">
+      </label>
+
+      <button class="btn btn-primary w-100" type="submit">Crear cuenta</button>
+
+      <p class="form__hint">
+        ¿Ya tienes cuenta?
+        <button type="button" class="link" data-switch="login">Inicia sesión</button>
+      </p>
+    </form>
+  </div>
+</div>
+<script src="../js/main.js"></script>
 </body>
 </html>
