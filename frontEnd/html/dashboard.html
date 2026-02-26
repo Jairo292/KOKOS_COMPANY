@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>KOKOS — Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+</head>
+
+<body>
+
+   <aside>
+    <header>
+        <h1>KOKOS</h1>
+        <p>Gestión de Seguros</p>
+    </header>
+
+    <nav aria-label="Menú principal">
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="clientes.html">Clientes</a></li>
+            <li><a href="polizas.html">Polizas</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h2>Perfil</h2>
+        <p>Agente Demo</p>
+        <p>agente@kokos.com</p>
+        <button>Cerrar sesión</button>
+    </section>
+
+</aside>
+    
+   <main>
+
+    <header>
+        <h2>Dashboard</h2>
+        <p>Resumen de tu cartera de seguros</p>
+    </header>
+    <section>
+    <h3>Indicadores Generales</h3>
+
+    <article>
+        <h4>Total Clientes</h4>
+        <p>10</p>
+    </article>
+
+    <article>
+        <h4>Polizas Activas</h4>
+        <p>21</p>
+    </article>
+
+    <article>
+        <h4>Primas Totales</h4>
+        <p>$30,510</p>
+    </article>
+
+    <article>
+        <h4>Por Vencer</h4>
+        <p>18</p>
+    </article>
+
+    </section>
+    <section>
+    <header>
+        <h3>Distribución por Tipo de Poliza</h3>
+    </header>
+
+    <figure>
+        <canvas id="policyChart">
+            Tu navegador no soporta graficos.
+        </canvas>
+
+        <figcaption>
+            Grafica que muestra el porcentaje de polizas por tipo: Vida, Auto, Hogar y Salud.
+        </figcaption>
+    </figure>
+</section>
+<section>
+    <header>
+        <h3>Proximos Vencimientos</h3>
+    </header>
+
+    <ul>
+        <li>
+            <article>
+                <h4>Francisco Jimenez Silva</h4>
+                <p>Poliza: POL-2025-021 · Auto</p>
+                <p>Vence en 23 días</p>
+                <button>Enviar recordatorio</button>
+            </article>
+        </li>
+
+        <li>
+            <article>
+                <h4>Ana Martínez Perez</h4>
+                <p>Poliza: POL-2025-012 · Hogar</p>
+                <p>Vence en 24 dias</p>
+                <button>Enviar recordatorio</button>
+            </article>
+        </li>
+    </ul>
+</section>
+
+</main>
+ <footer>
+        <p>© 2026 KOKOS — Sistema de Gestión de Seguros</p>
+    </footer>
+</body>
+</html>
