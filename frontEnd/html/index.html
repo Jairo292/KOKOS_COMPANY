@@ -4,86 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KOKOS</title>
+    <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
-    <header>  
-        <nav> 
-        <h1>KOKOS</h1>
-        <a href="login">Iniciar Sesión</a>
+    <header class="header-1">  
+        <nav class="nav"> 
+         <div class="company">
+      <span class="company-name">KOKOS</span>
+    </div>
+       <a class="btn btn-primary" href="#login"  id="openAuth">Iniciar Sesión</a>
         </nav> 
     </header>
 
  <main>
 
-        <section>
+        <section class="header-2">
             <header>
-                <h2>
-                    Gestiona tu cartera de seguros de forma inteligente
-                </h2>
+                  <div class="container header2">
+                          <div>
+                                    <h1 class="parrafo-title">
+                                      Gestiona tu cartera<br>
+                                     de seguros de<br>
+                                    forma <span class="accent">inteligente</span> </h1>
 
-                <p>
-                    KOKOS es la plataforma completa para agentes de seguros
-                    que buscan optimizar su trabajo y aumentar sus ventas.
-                </p>
-            </header>
+                  <p class="parrafo-header">
+          KOKOS es la plataforma completa para agentes de seguros que buscan optimizar su trabajo,
+          gestionar clientes y aumentar sus ventas de manera eficiente.
+        </p>
 
-            <button>Comenzar Ahora</button>
-            
-            <section>
-                <h3>Estadisticas</h3>
-                <ul>
-                    <li>500+ Agentes activos</li>
-                    <li>10k+ Polizas gestionadas</li>
-                    <li>98% Satisfacción</li>
-                </ul>
-            </section>
-        </section>
-        <section>
-            <header>
-                <h2>Caracteristicas Principales</h2>
-                <p>Todo lo que necesitas para gestionar tu negocio.</p>
-            </header>
-            <article>
-                <h3>Gestión de Clientes</h3>
-                <p>Manten la información organizada.</p>
-            </article>
-            <article>
-                <h3>Control de Polizas</h3>
-                <p>Administra polizas facilmente.</p>
-            </article>
-            <article>
-                <h3>Analisis y Reportes</h3>
-                <p>Visualiza estadisticas en tiempo real.</p>
-            </article>
-        </section>
-      
-<section>
-    <header>
-        <h2>¿Porque elegir KOKOS?</h2>
+         <div class="header2actions">
+          <a class="btn btn-primary" href="#comenzar">Comenzar Ahora →</a>
+        </div>
+
+
+     <ul class="header2stats">
+          <li><strong>500+</strong><span>Agentes activos</span></li>
+          <li><strong>10k+</strong><span>Pólizas gestionadas</span></li>
+          <li><strong>98%</strong><span>Satisfacción</span></li>
+        </ul>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="panel-card">
+          <article class="mini-card">
+            <div class="mini-head">
+              <div>
+                <div class="mini-title">Total Clientes</div>
+                <div class="mini-value">248</div>
+              </div>
+            </div>
+            <div class="progress"><span style="width:60%"></span></div>
+          </article>
+
+          <article class="mini-card">
+            <div class="mini-head">
+              <div>
+                <div class="mini-title">Pólizas Activas</div>
+                <div class="mini-value">156</div>
+              </div>
+            </div>
+            <div class="progress progress-success"><span style="width:70%"></span></div>
+          </article>
+        </div>
+      </aside>
+
     </header>
-    <ul>
+              </div>
+              </section>
+            
+        </section>
+        <section class="features">
+    <div class="container">
+      <header class="section-head">
+        <h2>Características Principales</h2>
+        <p>Todo lo que necesitas para gestionar tu negocio de seguros en una sola plataforma</p>
+      </header>
+
+      <div class="feature-grid">
+        <article class="card">
+          <h3>Gestión de Clientes</h3>
+          <p>Mantén toda la información de tus clientes organizada.</p>
+        </article>
+
+        <article class="card">
+          <h3>Control de Pólizas</h3>
+          <p>Administra todas las pólizas de seguros con facilidad.</p>
+        </article>
+
+        <article class="card">
+        
+          <h3>Análisis y Reportes</h3>
+          <p>Visualiza estadísticas en tiempo real.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+      
+<section class="porque">
+     <div class="container porque-grid">
+
+    <div class="porque-izq">
+     <header class="porque-head">
+        <h2>¿Por qué elegir KOKOS?</h2>
+        <p>Diseñado para agentes que quieren optimizar su trabajo diario.</p>
+      </header>
+    <ul class="porque-list">
         <li>Ahorra tiempo</li>
         <li>Aumenta tus ventas</li>
         <li>Mejora la experiencia</li>
         <li>Acceso desde cualquier lugar</li>
     </ul>
-    <aside>
+    </div>
+    <aside class="cta-card">
         <h3>Comienza Gratis Hoy</h3>
         <p>Sin tarjeta de credito requerida.</p>
-        <button>Empezar Ahora</button>
+           <a class="btn btn-primary" href="#comenzar">Empezar Ahora →</a>
     </aside>
+     </div>
 </section>
 
     </main>
-    <footer>
-    <p>© 2026 KOKOS. Todos los derechos reservados.</p>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">KOKOS</p>
+        <p class="footer-text">La plataforma de gestión para agentes de seguros.</p>
+      </div>
 
-    <nav>
-        <a href="#">Privacidad</a>
-        <a href="#">Terminos</a>
-        <a href="#">Contacto</a>
-    </nav>
+    </div>
+
+    <div class="footer-bottom">© 2026 KOKOS. Todos los derechos reservados.</div>
+  </div>
 </footer>
 
+<div class="modal" id="authModal">
+  <div class="modal__backdrop" data-close></div>
+   <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="modal__close" type="button" aria-label="Cerrar" data-close>✕</button>
+
+    <header class="modal__header">
+      <h2 id="authTitle">Bienvenido a KOKOS</h2>
+      <p class="modal__sub">Inicia sesión o crea tu cuenta.</p>
+    </header>
+
+     <div class="tabs">
+      <button class="tab is-active" type="button" data-tab="login">Iniciar sesión</button>
+      <button class="tab" type="button" data-tab="register">Crear cuenta</button>
+    </div>
+
+     <form class="form is-active" id="loginForm" data-panel="login">
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="email" placeholder="tu@correo.com">
+      </label>
+
+      <label class="field">
+        <span>Contraseña</span>
+        <input type="password" name="password" required autocomplete="current-password" placeholder="••••••••">
+      </label>
+
+      <button class="btn btn-primary w-100" type="submit" id="enter-btn">Entrar</button>
+
+      <p class="form__hint">
+        ¿No tienes cuenta?
+        <button type="button" class="link" data-switch="register">Regístrate</button>
+      </p>
+    </form>
+
+     <form class="form" id="registerForm" data-panel="register">
+      <label class="field">
+        <span>Nombre</span>
+        <input type="text" name="name" required autocomplete="name" placeholder="Tu nombre">
+      </label>
+
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="email" placeholder="tu@correo.com">
+      </label>
+
+      <label class="field">
+        <span>Contraseña</span>
+        <input type="password" name="password" required minlength="8" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
+      </label>
+
+      <label class="field">
+        <span>Confirmar contraseña</span>
+        <input type="password" name="password2" required minlength="8" autocomplete="new-password" placeholder="Repite tu contraseña">
+      </label>
+
+      <button class="btn btn-primary w-100" type="submit">Crear cuenta</button>
+
+      <p class="form__hint">
+        ¿Ya tienes cuenta?
+        <button type="button" class="link" data-switch="login">Inicia sesión</button>
+      </p>
+    </form>
+  </div>
+</div>
+<script src="../js/main.js"></script>
 </body>
 </html>
