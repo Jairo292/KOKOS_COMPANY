@@ -26,6 +26,12 @@ Aún no implementadas
 - Express.js  
 - MongoDB 
 
+
+---------------------------------------------------------------------------------------------------------------------------
+
+##  Colaboradores
+- Jairo Daniel Morales Arguello 2047839
+- Rebeca Monserrat Carrillo Sanchez 1897743
 ---------------------------------------------------------------------------------------------------------------------------
 
 ##  Cómo Clonar Este Repositorio
