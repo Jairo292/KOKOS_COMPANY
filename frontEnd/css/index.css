@@ -1,0 +1,154 @@
+:root {
+  --color-bg: #ffffff;
+  --color-text: #0a0a0a;
+
+  --color-surface: #ffffff;
+  --color-surface-text: #0a0a0a;
+  --color-primary: #030213;
+  --color-primary-contrast: #ffffff;
+
+  --color-secondary: #f2f3f7;
+  --color-secondary-text: #030213;
+  --color-muted: #ececf0;
+  --color-muted-text: #717182;
+
+  --color-accent: #e9ebef;
+  --color-accent-text: #030213;
+
+  --color-danger: #d4183d;
+  --color-danger-contrast: #ffffff;
+
+  --color-border: rgba(0,0,0,0.1);
+  --color-input-bg: #f3f3f5;
+
+  --radius-md: 10px;
+   --bg: var(--color-bg);
+  --text: var(--color-text);
+  --primary: var(--color-primary);
+  --muted: var(--color-muted-text);
+
+  --primary-2: #0e2668;    
+  --primary-20: #1d4ed8;
+  --border: var(--color-border);
+  --container: 1100px;
+
+  --radius: 18px;
+  --shadow: 0 18px 50px rgba(0,0,0,.10);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,.08);
+
+  --font-size-base: 16px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+.sidebar {
+  background: linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 0 20px;
+}
+
+.sidebar-header {
+  padding: 0 24px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+}
+
+.sidebar-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.sidebar-header p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+}
+
+.sidebar-nav {
+  padding: 20px 14px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-nav a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 18px 20px;
+  border-radius: 18px;
+  transition: 0.25s ease;
+}
+
+.sidebar-nav a:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.sidebar-nav a.active {
+  background: white;
+  color: var(--primary);
+}
+
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  border-top: 1px solid rgba(255,255,255,0.16);
+  margin-top: auto;
+}
+
+.profile-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.sidebar-profile h2 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.sidebar-profile p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.82);
+}
+
+.main-content {
+  padding: 34px 38px;
+}
+
+.main-header {
+  margin-bottom: 28px;
+}
+
+.main-header h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.main-header p {
+  font-size: 1.2rem;
+  color: #475569;
+}

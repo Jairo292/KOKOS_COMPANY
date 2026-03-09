@@ -4,35 +4,37 @@
     <meta charset="utf-8">
     <title>KOKOS — Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css">
 
     
 </head>
 
 <body>
+<div class="layout">    
+   <aside class="sidebar">
+        <header class="sidebar-header">
+            <h1>KOKOS</h1>
+            <p>Gestión de Seguros</p>
+        </header>
 
-   <aside>
-    <header>
-        <h1>KOKOS</h1>
-        <p>Gestión de Seguros</p>
-    </header>
-
-    <nav aria-label="Menú principal">
-        <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="clientes.html">Clientes</a></li>
-            <li><a href="polizas.html">Polizas</a></li>
-        </ul>
-    </nav>
-    <section>
-        <h2>Perfil</h2>
-        <p>Agente Demo</p>
-        <p>agente@kokos.com</p>
-        <button>Cerrar sesión</button>
-    </section>
-
-</aside>
+     <nav class="sidebar-nav" aria-label="Menú principal">
+            <ul>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="polizas.html">Pólizas</a></li>
+            </ul>
+        </nav>
+  
+        <section class="sidebar-profile">
+            <div class="profile-avatar">AG</div>
+            <div>
+                <h2>Agente Demo</h2>
+                <p>agente@kokos.com</p>
+            </div>
+        </section>
+    </aside>
     
-   <main>
+   <main class="main-content">
 
     <header>
         <h2>Dashboard</h2>
@@ -104,6 +106,7 @@
 </section>
 
 </main>
+</div>
  <footer>
         <p>© 2026 KOKOS — Sistema de Gestión de Seguros</p>
     </footer>
