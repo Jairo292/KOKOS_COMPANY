@@ -1,91 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/clientes.css">
   <title>Clientes</title>
 </head>
+
 <body>
 
   <div class="layout">
 
-  <aside>
-   <aside>
+    <aside class="sidebar">
+      <div>
+        <header class="sidebar-header">
+          <h2>KOKOS</h2>
+          <p>Gestión de Seguros</p>
+        </header>
 
-  <header>
-    <h2>KOKOS</h2>
-    <p>Gestión de Seguros</p>
-  </header>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="clientes.html" class="active">Clientes</a></li>
+            <li><a href="polizas.html">Polizas</a></li>
+          </ul>
+        </nav>
+      </div>
 
-  <nav>
-    <ul>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="clientes.html">Clientes</a></li>
-      <li><a href="polizas.html">Polizas</a></li>
-    </ul>
-  </nav>
+      <section class="sidebar-profile">
+        <div class="profile-avatar">AG</div>
 
-</aside>
-  </aside>
+        <div class="profile-info">
+          <h2>Agente Demo</h2>
+          <p>agente@kokos.com</p>
 
- <main>
+          <a href="index.html" class="logout-link">Cerrar sesión</a>
+        </div>
+      </section>
+    </aside>
 
-  <header>
-    <h1>Clientes</h1>
-    <p>Gestiona tu cartera de clientes</p>
-    <button>Nuevo Cliente</button>
-  </header>
 
-  <section class="clientes-grid">
+    <main class="main-content">
 
-  <article class="cliente-card">
-    <div class="cliente-header">
-      <div class="avatar">MG</div>
-      <button class="editar"></button>
-    </div>
-    <h3>Maria Garcia Lopez</h3>
-    <p class="info"> maria@email.com</p>
-    <p class="info"> 612 345 678</p>
-    <p class="info"> Desde 2025-01-15</p>
-  </article>
+      <header class="page-header">
+        <div>
+          <h1>Clientes</h1>
+          <p>Gestiona tu cartera de clientes</p>
+        </div>
 
-  <article class="cliente-card">
-    <div class="cliente-header">
-      <div class="avatar">CR</div>
-      <button class="editar"></button>
-    </div>
-    <h3>Carlos Ramirez</h3>
-    <p class="info"> carlos@email.com</p>
-    <p class="info"> 611 987 654</p>
-    <p class="info"> Desde 2024-12-10</p>
-  </article>
+        <button class="btn-primary">+ Nuevo Cliente</button>
+      </header>
 
-  <article class="cliente-card">
-    <div class="cliente-header">
-      <div class="avatar">AP</div>
-      <button class="editar"></button>
-    </div>
-    <h3>Ana Perez</h3>
-    <p class="info"> ana@email.com</p>
-    <p class="info"> 613 456 789</p>
-    <p class="info"> Desde 2025-02-02</p>
-  </article>
+      <section class="search-box">
+        <input type="text" placeholder="Buscar clientes por nombre o email...">
+      </section>
 
-  <article class="cliente-card">
-    <div class="cliente-header">
-      <div class="avatar">JL</div>
-      <button class="editar"></button>
-    </div>
-    <h3>Juan Lopez</h3>
-    <p class="info"> juan@email.com</p>
-    <p class="info"> 614 111 222</p>
-    <p class="info"> Desde 2025-03-05</p>
-  </article>
+      <section class="clientes-grid">
 
-</section>
+        <article class="cliente-card">
+          <div class="cliente-header">
+            <div class="avatar">MG</div>
+            <button class="editar"></button>
+          </div>
+          <h3>Maria Garcia Lopez</h3>
+          <p class="info"> maria@email.com</p>
+          <p class="info"> 612 345 678</p>
+          <p class="info"> Desde 2025-01-15</p>
+        </article>
 
-</main>
+        <article class="cliente-card">
+          <div class="cliente-header">
+            <div class="avatar">CR</div>
+            <button class="editar"></button>
+          </div>
+          <h3>Carlos Ramirez</h3>
+          <p class="info"> carlos@email.com</p>
+          <p class="info"> 611 987 654</p>
+          <p class="info"> Desde 2024-12-10</p>
+        </article>
 
-</div>
+        <article class="cliente-card">
+          <div class="cliente-header">
+            <div class="avatar">AP</div>
+            <button class="editar"></button>
+          </div>
+          <h3>Ana Perez</h3>
+          <p class="info"> ana@email.com</p>
+          <p class="info"> 613 456 789</p>
+          <p class="info"> Desde 2025-02-02</p>
+        </article>
+
+        <article class="cliente-card">
+          <div class="cliente-header">
+            <div class="avatar">JL</div>
+            <button class="editar"></button>
+          </div>
+          <h3>Juan Lopez</h3>
+          <p class="info"> juan@email.com</p>
+          <p class="info"> 614 111 222</p>
+          <p class="info"> Desde 2025-03-05</p>
+        </article>
+
+      </section>
+
+    </main>
+
+  </div>
 
 </body>
+
 </html>
