@@ -1,111 +1,154 @@
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <title>KOKOS — Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 
 <body>
+    <div class="layout">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>KOKOS</h1>
+                <p>Gestión de Seguros</p>
+            </header>
 
-   <aside>
-    <header>
-        <h1>KOKOS</h1>
-        <p>Gestión de Seguros</p>
-    </header>
+            <nav class="sidebar-nav" aria-label="Menú principal">
+                <ul>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="clientes.html">Clientes</a></li>
+                    <li><a href="polizas.html">Pólizas</a></li>
+                </ul>
+            </nav>
 
-    <nav aria-label="Menú principal">
-        <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="clientes.html">Clientes</a></li>
-            <li><a href="polizas.html">Polizas</a></li>
-        </ul>
-    </nav>
-    <section>
-        <h2>Perfil</h2>
-        <p>Agente Demo</p>
-        <p>agente@kokos.com</p>
-        <button>Cerrar sesión</button>
-    </section>
+            <section class="sidebar-profile">
+                <div class="profile-avatar">AG</div>
+                <div>
+                    <h2>Agente Demo</h2>
+                    <p>agente@kokos.com</p>
+                    <a href="index.html">Cerrar sesión</a></li>
+                </div>
+            </section>
+        </aside>
 
-</aside>
-    
-   <main>
+        <main class="main-content">
+            <header class="main-header">
+                <h2>Dashboard</h2>
+                <p>Resumen de tu cartera de seguros</p>
+            </header>
 
-    <header>
-        <h2>Dashboard</h2>
-        <p>Resumen de tu cartera de seguros</p>
-    </header>
-    <section>
-    <h3>Indicadores Generales</h3>
+            <h3 class="section-title">Indicadores Generales</h3>
 
-    <article>
-        <h4>Total Clientes</h4>
-        <p>10</p>
-    </article>
+            <section class="stats-section">
+                <article class="stat-card">
+                    <h4>Total Clientes</h4>
+                    <p class="stat-number">10</p>
+                    <span class="stat-extra success">↗ +12% este mes</span>
+                </article>
 
-    <article>
-        <h4>Polizas Activas</h4>
-        <p>21</p>
-    </article>
+                <article class="stat-card">
+                    <h4>Pólizas Activas</h4>
+                    <p class="stat-number">21</p>
+                    <span class="stat-extra success">↗ +12% este mes</span>
+                </article>
 
-    <article>
-        <h4>Primas Totales</h4>
-        <p>$30,510</p>
-    </article>
+                <article class="stat-card">
+                    <h4>Primas Totales</h4>
+                    <p class="stat-number">$30,510</p>
+                    <span class="stat-extra success">↗ +12% este mes</span>
+                </article>
 
-    <article>
-        <h4>Por Vencer</h4>
-        <p>18</p>
-    </article>
+                <article class="stat-card">
+                    <h4>Por Vencer</h4>
+                    <p class="stat-number">18</p>
+                    <span class="stat-extra warning">⚠ Requiere atención</span>
+                </article>
+            </section>
 
-    </section>
-    <section>
-    <header>
-        <h3>Distribución por Tipo de Poliza</h3>
-    </header>
+            <section class="content-grid">
+                <section class="panel chart-panel">
+                    <header class="panel-header">
+                        <h3>Distribución por Tipo de Póliza</h3>
+                    </header>
 
-    <figure>
-        <canvas id="policyChart">
-            Tu navegador no soporta graficos.
-        </canvas>
+                    <figure class="chart-figure">
+                        <div class="chart-box">
+                            <canvas id="policyChart"></canvas>
+                        </div>
+                        <figcaption>
+                            Gráfica que muestra el porcentaje de pólizas por tipo.
+                        </figcaption>
+                    </figure>
+                </section>
 
-        <figcaption>
-            Grafica que muestra el porcentaje de polizas por tipo: Vida, Auto, Hogar y Salud.
-        </figcaption>
-    </figure>
-</section>
-<section>
-    <header>
-        <h3>Proximos Vencimientos</h3>
-    </header>
+                <section class="panel vencimientos-panel">
+                    <header class="panel-header">
+                        <h3>Próximos Vencimientos</h3>
+                    </header>
 
-    <ul>
-        <li>
-            <article>
-                <h4>Francisco Jimenez Silva</h4>
-                <p>Poliza: POL-2025-021 · Auto</p>
-                <p>Vence en 23 días</p>
-                <button>Enviar recordatorio</button>
-            </article>
-        </li>
+                    <ul class="vencimientos-list">
+                        <li>
+                            <article class="vencimiento-item">
+                                <div>
+                                    <h4>Francisco Jiménez Silva</h4>
+                                    <p>Póliza: POL-2025-021 · Auto</p>
+                                </div>
+                                <div class="vencimiento-meta">
+                                    <p class="days">Vence en 23 días</p>
+                                    <button>Enviar recordatorio</button>
+                                </div>
+                            </article>
+                        </li>
 
-        <li>
-            <article>
-                <h4>Ana Martínez Perez</h4>
-                <p>Poliza: POL-2025-012 · Hogar</p>
-                <p>Vence en 24 dias</p>
-                <button>Enviar recordatorio</button>
-            </article>
-        </li>
-    </ul>
-</section>
+                        <li>
+                            <article class="vencimiento-item">
+                                <div>
+                                    <h4>Ana Martínez Pérez</h4>
+                                    <p>Póliza: POL-2025-012 · Hogar</p>
+                                </div>
+                                <div class="vencimiento-meta">
+                                    <p class="days">Vence en 24 días</p>
+                                    <button>Enviar recordatorio</button>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+        </main>
+    </div>
 
-</main>
- <footer>
+    <footer class="footer">
         <p>© 2026 KOKOS — Sistema de Gestión de Seguros</p>
     </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('policyChart');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Vida', 'Automoviles', 'Propiedades', 'Gastos medicos'],
+      datasets: [{
+        data: [25, 25, 25, 25],
+        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
+        borderColor: '#ffffff',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+</script>
 </html>
