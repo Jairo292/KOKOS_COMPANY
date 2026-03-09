@@ -152,3 +152,155 @@
   font-size: 1.2rem;
   color: #475569;
 }
+
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-bottom: 34px;
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 30px;
+  min-height: 185px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-card h4 {
+  font-size: 1.15rem;
+  color: #334155;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.stat-extra {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.stat-extra.success {
+  color: var(--success);
+}
+
+.stat-extra.warning {
+  color: var(--warning);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 28px;
+}
+
+.panel {
+  background: white;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 30px;
+  min-height: 420px;
+}
+
+.panel h3 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin-bottom: 26px;
+}
+
+.chart-panel figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#policyChart {
+  width: 100%;
+  max-width: 360px;
+  height: 360px;
+}
+
+.chart-panel figcaption {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--color-muted-text);
+  font-size: 0.95rem;
+}
+
+.vencimientos-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.vencimiento-item {
+  background: #f8fafc;
+  border-radius: 18px;
+  padding: 18px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.vencimiento-item h4 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.vencimiento-item p {
+  color: #475569;
+  font-size: 1rem;
+}
+
+.vencimiento-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.days {
+  color: var(--warning);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.vencimiento-meta button {
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.vencimiento-meta button:hover {
+  background: var(--primary-dark);
+}
+
+.footer {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 18px;
+  color: #64748b;
+  font-size: 0.95rem;
+}
