@@ -78,7 +78,7 @@
                             <canvas id="policyChart"></canvas>
                         </div>
                         <figcaption>
-                            Gráfica que muestra el porcentaje de pólizas por tipo: Vida, Auto, Hogar y Salud.
+                            Gráfica que muestra el porcentaje de pólizas por tipo.
                         </figcaption>
                     </figure>
                 </section>
@@ -124,5 +124,30 @@
         <p>© 2026 KOKOS — Sistema de Gestión de Seguros</p>
     </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('policyChart');
 
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Vida', 'Automoviles', 'Propiedades', 'Gastos medicos'],
+      datasets: [{
+        data: [25, 25, 25, 25],
+        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
+        borderColor: '#ffffff',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+</script>
 </html>
