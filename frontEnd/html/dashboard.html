@@ -1,129 +1,128 @@
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <title>KOKOS — Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/index.css">
-
-    
 </head>
 
 <body>
-<div class="layout">    
-   <aside class="sidebar">
-        <header class="sidebar-header">
-            <h1>KOKOS</h1>
-            <p>Gestión de Seguros</p>
-        </header>
+    <div class="layout">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>KOKOS</h1>
+                <p>Gestión de Seguros</p>
+            </header>
 
-     <nav class="sidebar-nav" aria-label="Menú principal">
-            <ul>
-                <li><a href="dashboard.html" class="active">Dashboard</a></li>
-                <li><a href="clientes.html">Clientes</a></li>
-                <li><a href="polizas.html">Pólizas</a></li>
-            </ul>
-        </nav>
-  
-        <section class="sidebar-profile">
-            <div class="profile-avatar">AG</div>
-            <div>
-                <h2>Agente Demo</h2>
-                <p>agente@kokos.com</p>
-            </div>
-        </section>
-    </aside>
-    
-   <main class="main-content">
+            <nav class="sidebar-nav" aria-label="Menú principal">
+                <ul>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="clientes.html">Clientes</a></li>
+                    <li><a href="polizas.html">Pólizas</a></li>
+                </ul>
+            </nav>
 
-    <header class="main-header">
-        <h2>Dashboard</h2>
-        <p>Resumen de tu cartera de seguros</p>
-    </header>
-    <section class="stats-section">
-    <h3>Indicadores Generales</h3>
-
-    <article class="stat-card">
-        <h4>Total Clientes</h4>
-        <p class="stat-number">10</p>
-        <span class="stat-extra success">↗ +12% este mes</span>
-    </article>
-
-    <article class="stat-card">
-        <h4>Polizas Activas</h4>
-        <p class="stat-number">21</p>
-        <span class="stat-extra success">↗ +12% este mes</span>
-    </article>
-
-    <article class="stat-card">
-        <h4>Primas Totales</h4>
-        <p class="stat-number" >$30,510</p>
-        <span class="stat-extra success">↗ +12% este mes</span>
-    
-    </article>
-
-    <article class="stat-card">
-        <h4>Por Vencer</h4>
-        <p class="stat-number">18</p>
-        <span class="stat-extra warning">⚠ Requiere atención</span>
-    </article>
-    </section>
-
-    <section  class="bottom-grid">
-    <header>
-        <h3>Distribución por Tipo de Poliza</h3>
-    </header>
-
-    <figure>
-        <canvas id="policyChart">
-            Tu navegador no soporta graficos.
-        </canvas>
-
-        <figcaption>
-            Grafica que muestra el porcentaje de polizas por tipo: Vida, Auto, Hogar y Salud.
-        </figcaption>
-    </figure>
-</section>
-
-
-<section class="bottom-grid">
-    <header>
-        <h3>Proximos Vencimientos</h3>
-    </header>
-
-    <ul  class="vencimientos-list">
-        <li>
-            <article  class="vencimiento-item">
-                 <div>
-                <h4>Francisco Jimenez Silva</h4>
-                <p>Poliza: POL-2025-021 · Auto</p>
-            </div>
-             <div  class="vencimiento-meta">
-                <p class="days">Vence en 23 días</p>
-                <button>Enviar recordatorio</button>
+            <section class="sidebar-profile">
+                <div class="profile-avatar">AG</div>
+                <div>
+                    <h2>Agente Demo</h2>
+                    <p>agente@kokos.com</p>
                 </div>
-            </article>
-        </li>
+            </section>
+        </aside>
 
-        <li>
-            <article  class="vencimiento-item">
-                <h4>Ana Martínez Perez</h4>
-                <p>Poliza: POL-2025-012 · Hogar</p>
-            </div>
-            <div  class="vencimiento-meta">
-                <p class="days">Vence en 24 dias</p>
-                <button>Enviar recordatorio</button>
-                </div>
-            </article>
-        </li>
-    </ul>
-</section>
-</section>
+        <main class="main-content">
+            <header class="main-header">
+                <h2>Dashboard</h2>
+                <p>Resumen de tu cartera de seguros</p>
+            </header>
 
-</main>
-</div>
- <footer class="footer">
+            <h3 class="section-title">Indicadores Generales</h3>
+
+            <section class="stats-section">
+                <article class="stat-card">
+                    <h4>Total Clientes</h4>
+                    <p class="stat-number">10</p>
+                    <span class="stat-extra success">↗ +12% este mes</span>
+                </article>
+
+                <article class="stat-card">
+                    <h4>Pólizas Activas</h4>
+                    <p class="stat-number">21</p>
+                    <span class="stat-extra success">↗ +12% este mes</span>
+                </article>
+
+                <article class="stat-card">
+                    <h4>Primas Totales</h4>
+                    <p class="stat-number">$30,510</p>
+                    <span class="stat-extra success">↗ +12% este mes</span>
+                </article>
+
+                <article class="stat-card">
+                    <h4>Por Vencer</h4>
+                    <p class="stat-number">18</p>
+                    <span class="stat-extra warning">⚠ Requiere atención</span>
+                </article>
+            </section>
+
+            <section class="content-grid">
+                <section class="panel chart-panel">
+                    <header class="panel-header">
+                        <h3>Distribución por Tipo de Póliza</h3>
+                    </header>
+
+                    <figure class="chart-figure">
+                        <div class="chart-box">
+                            <canvas id="policyChart"></canvas>
+                        </div>
+                        <figcaption>
+                            Gráfica que muestra el porcentaje de pólizas por tipo: Vida, Auto, Hogar y Salud.
+                        </figcaption>
+                    </figure>
+                </section>
+
+                <section class="panel vencimientos-panel">
+                    <header class="panel-header">
+                        <h3>Próximos Vencimientos</h3>
+                    </header>
+
+                    <ul class="vencimientos-list">
+                        <li>
+                            <article class="vencimiento-item">
+                                <div>
+                                    <h4>Francisco Jiménez Silva</h4>
+                                    <p>Póliza: POL-2025-021 · Auto</p>
+                                </div>
+                                <div class="vencimiento-meta">
+                                    <p class="days">Vence en 23 días</p>
+                                    <button>Enviar recordatorio</button>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li>
+                            <article class="vencimiento-item">
+                                <div>
+                                    <h4>Ana Martínez Pérez</h4>
+                                    <p>Póliza: POL-2025-012 · Hogar</p>
+                                </div>
+                                <div class="vencimiento-meta">
+                                    <p class="days">Vence en 24 días</p>
+                                    <button>Enviar recordatorio</button>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
         <p>© 2026 KOKOS — Sistema de Gestión de Seguros</p>
     </footer>
 </body>
+
 </html>
