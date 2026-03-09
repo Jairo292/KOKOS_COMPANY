@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = loginForm.email.value;
     const password = loginForm.password.value;
     console.log("LOGIN:", email, password);
+    window.location.href = "dashboard.html";
   });
 
   registerForm.addEventListener('submit', function(e){
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   botoncito.addEventListener('click', (e) => {
     e.preventDefault();
     modal.classList.add('is-open');
-    setTab("login"); // abre siempre en login
+    setTab("login"); 
   });
 
   modal.addEventListener('click', (e) => {
