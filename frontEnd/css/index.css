@@ -126,6 +126,12 @@ button {
   color: rgba(255,255,255,0.82);
 }
 
+.sidebar-profile a {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: var(--warning)
+}
+
 .main-content {
   padding: 34px 38px;
 }
