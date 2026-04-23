@@ -1,40 +1,173 @@
+/* --- Modal Nuevo Cliente --- */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 999;
+}
+.modal.is-open { display: block; }
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+}
+.modal__dialog {
+  position: relative;
+  width: min(420px, calc(100% - 32px));
+  margin: 7vh auto 0;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 25px 80px rgba(0,0,0,.25);
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px;
+}
+.modal__close:hover { background: rgba(0,0,0,.06); }
+.modal__header h2 { margin: 6px 0 14px; font-size: 1.35rem; }
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.modal__label {
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.modal__input {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: border .2s;
+}
+.modal__input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+}
+.modal__actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+.modal__cancel {
+  flex: 1;
+  border: none;
+  background: #f3f4f6;
+  color: #222;
+  border-radius: 10px;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+.modal__cancel:hover {
+  background: #e5e7eb;
+}
+.modal__submit {
+  flex: 1;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+.modal__submit:hover {
+  background: var(--primary-dark);
+}
+.table-card {
+  background: var(--surface);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  margin-top: 18px;
+}
+.clientes-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+.clientes-table thead th {
+  text-align: left;
+  padding: 18px;
+  font-weight: 700;
+  color: #475569;
+  border-bottom: 1px solid #eef2f6;
+}
+.clientes-table thead th:last-child {
+  text-align: center;
+}
+.clientes-table tbody td {
+  padding: 18px;
+  border-bottom: 1px solid #f2f4f7;
+  color: var(--text);
+}
+.clientes-table tbody tr:hover {
+  background: #fbfdff;
+}
+.actions {
+  text-align: center;
+  vertical-align: middle;
+}
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+}
+.icon-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.05rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+@media (max-width: 1200px) {
+  .clientes-table { min-width: 0; display: block; overflow: auto; }
+}
 :root {
-  --color-bg: #ffffff;
-  --color-text: #0a0a0a;
-
+  /* Shared tokens aligned to dashboard visual system */
+  --color-bg: #f3f4f6;
+  --color-text: #0f172a;
   --color-surface: #ffffff;
-  --color-surface-text: #0a0a0a;
-  --color-primary: #030213;
-  --color-primary-contrast: #ffffff;
-
-  --color-secondary: #f2f3f7;
-  --color-secondary-text: #030213;
-  --color-muted: #ececf0;
-  --color-muted-text: #717182;
-
-  --color-accent: #e9ebef;
-  --color-accent-text: #030213;
-
-  --color-danger: #d4183d;
-  --color-danger-contrast: #ffffff;
-
-  --color-border: rgba(0,0,0,0.1);
-  --color-input-bg: #f3f3f5;
-
-  --bg: #f5f6f8;
-  --text: var(--color-text);
-  --surface: var(--color-surface);
-  --muted: var(--color-muted-text);
+  --color-muted-text: #64748b;
+  --color-border: rgba(0,0,0,0.08);
 
   --primary: #2563eb;
-  --primary-2: #0e2668;
+  --primary-dark: #1e40af;
   --primary-20: #1d4ed8;
+  --primary-2: #0e2668;
 
+  --success: #16a34a;
+  --warning: #ea580c;
+
+  --surface: var(--color-surface);
+  --bg: var(--color-bg);
+  --text: var(--color-text);
+  --muted: var(--color-muted-text);
   --border: var(--color-border);
 
-  --radius-md: 10px;
   --radius: 18px;
-
   --shadow: 0 18px 50px rgba(0,0,0,.10);
   --shadow-soft: 0 10px 30px rgba(0,0,0,.08);
 
