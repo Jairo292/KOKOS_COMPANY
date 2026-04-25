@@ -12,19 +12,53 @@ Este repositorio busca:
 
 ---------------------------------------------------------------------------------------------------------------------------
 
-##  Tecnologías que usará el proyecto
-Aún no implementadas
+##  Tecnologías del proyecto
 
 ### Frontend
 - HTML  
 - CSS  
-- Bootstrap  
 - JavaScript
 
 ### Backend
 - Node.js  
 - Express.js  
-- MongoDB 
+- MongoDB (local)
+- Dependencias: `express`, `mongoose`, `cors`, `bcryptjs`, `jsonwebtoken`, `dotenv`
+
+---------------------------------------------------------------------------------------------------------------------------
+
+##  Cómo iniciar el Backend
+
+### Requisitos previos
+- [Node.js](https://nodejs.org/) instalado
+- [MongoDB](https://www.mongodb.com/try/download/community) corriendo localmente
+
+### Pasos
+
+1. Entrar a la carpeta del backend:
+```bash
+cd backEnd
+```
+
+2. Instalar dependencias:
+```bash
+npm install
+```
+
+3. Crear el archivo `.env` dentro de `/backEnd` con el siguiente contenido:
+```
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/kokos_db
+JWT_SECRET=tu_clave_secreta_larga
+```
+> ⚠️ El archivo `.env` **no se sube a GitHub**. Cada desarrollador debe crearlo manualmente.
+
+4. Iniciar el servidor:
+```bash
+npm start
+```
+
+El servidor corre en `http://localhost:5000`
 
 
 ---------------------------------------------------------------------------------------------------------------------------
