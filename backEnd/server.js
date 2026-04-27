@@ -1,54 +1,51 @@
-const express = require('express'); //para crear tu servidor
-const mongoose = require('mongoose'); //para trabajar con Mongo
-const cors = require('cors'); //para permitir solicitudes
-const bcrypt = require('bcryptjs'); //para encriptar contraseñas
-const jwt = require('jsonwebtoken'); // para generar tokens de autenticación
-require('dotenv').config(); //para cargar variables de entorno desde .env
+const express = require('express'); 
+const mongoose = require('mongoose'); 
+const cors = require('cors');
+const bcrypt = require('bcryptjs'); 
+const jwt = require('jsonwebtoken'); 
+const multer = require('multer');
+const path = require('path');
+const Documento = require('./models/Documento');
+require('dotenv').config(); 
 
-const app = express(); // Crear instancia de Express
+const app = express(); 
 
+app.use(cors());  
+app.use(express.json());  
+app.use('/uploads', express.static('uploads'));
 
-app.use(cors());  // Habilitar CORS para todas las rutas
-app.use(express.json());  //para recibir datos en formato JSON
+const PORT = process.env.PORT || 5000;  
+const MONGO_URI = process.env.MONGO_URI; 
+const JWT_SECRET = process.env.JWT_SECRET; 
 
-// Variables de entorno
-const PORT = process.env.PORT || 5000;  // Puerto del servidor
-const MONGO_URI = process.env.MONGO_URI;  // URI de conexión a MongoDB
-const JWT_SECRET = process.env.JWT_SECRET; //clave secreteaa
-
-// Conexión a MongoDB
 mongoose.connect(MONGO_URI)
     .then(() => console.log('Conectado a Mongo KOKOS'))
     .catch((err) => console.error('Error de conexion:', err));
 
-// Esquema de Usuario
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true }, //el nombre de usuario es obligatorio
-    email: {  //el correo electrónico es obligatorio y unico
+    username: { type: String, required: true }, 
+    email: {  
         type: String,
         required: true,
         unique: true,
         match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'Email no válido']
     },
-    password: {  //es obligatoria
+    password: {  
         type: String,
         required: true,
         select: false
     }
 });
 
-// Encriptar contraseña antes de guardar por eso dice pre
 userSchema.pre('save', async function () {
     if (!this.isModified('password')) return;
 
-    const salt = await bcrypt.genSalt(10); // esto es para encriptar la contraseña 
-    this.password = await bcrypt.hash(this.password, salt); // esto es para encriptar la contraseña
+    const salt = await bcrypt.genSalt(10); 
+    this.password = await bcrypt.hash(this.password, salt);
 });
 
-const Usuario = mongoose.model('Usuario', userSchema); // Modelo de Usuario
+const Usuario = mongoose.model('Usuario', userSchema);
 
-
-// registro de usuario, el /api/register es la ruta para registrar un nuevo usuario que es un endpoint
 app.post('/api/register', async (req, res) => {
     try {
         const { username, email, password, confirmPassword } = req.body;
@@ -66,13 +63,11 @@ app.post('/api/register', async (req, res) => {
             return res.status(400).json({ message: 'La contraseña debe tener al menos 8 caracteres' });
         }
 
-        // Verificar si el correo ya existe
         const existingUser = await Usuario.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'Este correo ya está registrado' });
         }
 
-        // Crear y guardar
         const newuser = new Usuario({ username, email, password });
         await newuser.save();
 
@@ -83,7 +78,6 @@ app.post('/api/register', async (req, res) => {
     }
 });
 
-// inicio de sesión, el /api/login es la ruta para iniciar sesión que es un endpoint
 app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -92,19 +86,16 @@ app.post('/api/login', async (req, res) => {
             return res.status(400).json({ message: 'Email y contraseña requeridos' });
         }
 
-        // Buscar usuario y pedir la contraseña 
         const user = await Usuario.findOne({ email }).select('+password');
         if (!user) {
             return res.status(400).json({ message: 'El usuario no existe' });
         }
 
-        // Comparar contraseñas
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).json({ message: 'Contraseña incorrecta' });
         }
 
-        // Generar Token
         const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '2h' });
 
         res.json({
@@ -122,7 +113,6 @@ app.listen(PORT, () => {
     console.log(`VAMOOOOS Servidor KOKOS corriendo en puerto ${PORT}`);
 });
 
-// Esquema de Cliente como lo hicimos con el user
 const clienteSchema = new mongoose.Schema({
     nombre: { type: String, required: true },
     correo: { type: String, required: true, unique: true },
@@ -132,7 +122,6 @@ const clienteSchema = new mongoose.Schema({
 
 const Cliente = mongoose.model('Cliente', clienteSchema);
 
-//crear cliente, el /api/clientes es la ruta para crear un nuevo cliente que es un endpoint
 app.post('/api/clientes', async (req, res) => {
     try {
         const { nombre, correo, telefono } = req.body;
@@ -144,7 +133,6 @@ app.post('/api/clientes', async (req, res) => {
     }
 });
 
-//para obtener clientes
 app.get('/api/clientes', async (req, res) => {
     try {
         const clientes = await Cliente.find();
@@ -154,7 +142,6 @@ app.get('/api/clientes', async (req, res) => {
     }
 });
 
-//para actualiza clientes
 app.post('/api/clientes/update', async (req, res) => {
     const { email, nombreCompleto, telefono } = req.body;
 
@@ -181,7 +168,6 @@ app.post('/api/clientes/update', async (req, res) => {
     }
 });
 
-//eliminar cliente
 app.post('/api/clientes/delete', async (req, res) => {
     const { email } = req.body;
 
@@ -205,7 +191,6 @@ app.post('/api/clientes/delete', async (req, res) => {
     }
 });
 
-// Esquema de Póliza
 const polizaSchema = new mongoose.Schema({
     cliente: { type: String, required: true },
     numeroPoliza: { type: String, required: true, unique: true },
@@ -218,7 +203,6 @@ const polizaSchema = new mongoose.Schema({
 
 const Poliza = mongoose.model('Poliza', polizaSchema);
 
-//crear polizzas
 app.post('/api/polizas/register', async (req, res) => {
     const { cliente, numeroPoliza, tipoSeguro, estado, primaMensual, fechaInicio, fechaVencimiento } = req.body;
 
@@ -252,7 +236,6 @@ app.post('/api/polizas/register', async (req, res) => {
     }
 });
 
-//obtener polizas
 app.get('/api/polizas', async (req, res) => {
     try {
         const polizas = await Poliza.find();
@@ -262,7 +245,6 @@ app.get('/api/polizas', async (req, res) => {
     }
 });
 
-//actualizar polizas
 app.post('/api/polizas/update', async (req, res) => {
     const { numeroPoliza, cliente, tipoSeguro, estado, primaMensual, fechaInicio, fechaVencimiento } = req.body;
 
@@ -293,7 +275,6 @@ app.post('/api/polizas/update', async (req, res) => {
     }
 });
 
-//eliminar polizas
 app.post('/api/polizas/delete', async (req, res) => {
     const { numeroPoliza } = req.body;
 
@@ -316,4 +297,156 @@ app.post('/api/polizas/delete', async (req, res) => {
         res.status(500).json({ message: 'Error al eliminar póliza' });
     }
 });
+
+const inmuebleSchema = new mongoose.Schema({
+   
+  cliente_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Cliente',
+    required: true
+  },
+  poliza_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Poliza',
+    required: true
+  },
+  inmueble_tipo: {
+    type: String,
+    required: true
+  },
+  inmueble_valor: {
+    type: Number,
+    required: true
+  },
+  inmueble_date: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+const Inmueble = mongoose.model('Inmueble', inmuebleSchema);
+
+app.post('/api/inmuebles', async (req, res) => {
+  const { cliente_id, poliza_id, inmueble_tipo, inmueble_valor } = req.body;
+
+  if (!cliente_id || !poliza_id || !inmueble_tipo || !inmueble_valor) {
+    return res.status(400).json({ message: 'Todos los campos son obligatorios' });
+  }
+
+  try {
+    const nuevoInmueble = new Inmueble({
+      cliente_id,
+      poliza_id,
+      inmueble_tipo,
+      inmueble_valor
+    });
+
+    await nuevoInmueble.save();
+
+    res.status(201).json({
+      message: 'Inmueble guardado correctamente'
+    });
+
+  } catch (err) {
+        res.status(500).json({ message: 'Error al crear póliza' });
+    }
+});
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); 
+  },
+  filename: function (req, file, cb) {
+    const ext = file.originalname.split('.').pop(); 
+    const nombreUnico = Date.now() + '.' + ext;
+    cb(null, nombreUnico);
+  }
+});
+
+const upload = multer({ 
+  storage: storage, 
+  fileFilter: function (req, file, cb) { 
+    if (file.mimetype === 'application/pdf') {
+      cb(null, true);
+    } else {
+      cb(new Error('Solo PDFs'), false);
+    }
+  }
+});
+
+app.post('/api/documentos/upload', (req, res) => {
+  upload.single('documento')(req, res, async function (err) {
+
+    if (err) {
+      return res.status(400).json({ message: err.message });
+    }
+
+    const { cliente_id, poliza_id } = req.body; 
+
+    if (!req.file || !cliente_id || !poliza_id) { 
+      return res.status(400).json({ message: 'Faltan datos o archivo' });
+    }
+
+    try {
+      const nuevoDocumento = new Documento({ 
+        cliente_id,
+        poliza_id,
+        documento_nombre: req.file.originalname,
+        documento_tipo: req.file.mimetype, 
+        documento_url: `/uploads/${req.file.filename}` 
+      });
+
+      await nuevoDocumento.save();  
+      res.json({ message: 'Documento subido', documento: nuevoDocumento });
+
+    } catch (err) {
+      res.status(500).json({ message: 'Error al subir documento' });
+    }
+  });
+});
+
+const pagoSchema = new mongoose.Schema({
+  cliente_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Cliente',
+    required: true
+  },
+  poliza_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Poliza',
+    required: true
+  },
+  pagos_monto: {
+    type: Number,
+    required: true
+  },
+  pagos_periodo: {
+    type: String,
+    required: true
+  },
+  pagos_metodo: {
+    type: String,
+    required: true
+  },
+  pagos_estatus: {
+    type: String,
+    required: true
+  },
+  pagos_referencia: {
+    type: String,
+    required: true
+  },
+  pagos_Fvencimiento: {
+    type: Date,
+    required: true
+  },
+  pagos_date: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+const Pago = mongoose.model('Pago', pagoSchema);
+
+
 
