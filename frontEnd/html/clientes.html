@@ -148,12 +148,14 @@
     const form = document.getElementById('formNuevoCliente');
     const submitBtn = form.querySelector('.modal__submit');
     const modalTitle = document.getElementById('nuevoClienteTitle');
+    const deleteBtn = document.getElementById('deleteBtn');
 
     // Abrir modal para nuevo cliente
     openBtn.onclick = () => {
       form.reset();
       submitBtn.textContent = 'Crear Cliente';
       modalTitle.textContent = 'Nuevo Cliente';
+        deleteBtn.style.display = 'none';
       modal.classList.add('is-open');
     };
 
@@ -173,6 +175,7 @@
         form.fecha.value = tds[3].textContent.trim();
         submitBtn.textContent = 'Guardar Cambios';
         modalTitle.textContent = 'Editar Cliente';
+        deleteBtn.style.display = 'block';
         modal.classList.add('is-open');
       });
     });

@@ -111,8 +111,12 @@
                 <input class="modal__input" type="text" name="vencimiento" placeholder="dd/mm/aaaa" required>
               </label>
               <div class="modal__actions">
-                <button type="button" class="modal__cancel" data-close>Cancelar</button>
-                <button type="submit" class="modal__submit">Crear Póliza</button>
+                <button type="button" class="modal__delete" id="deletePolizaBtn">Eliminar</button>
+
+                <div class="modal__actions-right">
+                  <button type="button" class="modal__cancel" data-close>Cancelar</button>
+                  <button type="submit" class="modal__submit">Guardar Cambios</button>
+                </div>
               </div>
             </form>
           </div>
@@ -193,6 +197,7 @@
     const formPoliza = document.getElementById('formNuevaPoliza');
     const submitPolizaBtn = formPoliza.querySelector('.modal__submit');
     const modalPolizaTitle = document.getElementById('nuevaPolizaTitle');
+    const deletePolizaBtn = document.getElementById('deletePolizaBtn');
 
     // Abrir modal para nueva póliza
     openPolizaBtn.onclick = () => {
@@ -200,6 +205,7 @@
       submitPolizaBtn.textContent = 'Crear Póliza';
       modalPolizaTitle.textContent = 'Nueva Póliza';
       modalPoliza.classList.add('is-open');
+      deletePolizaBtn.style.display = 'none';
     };
     // Cerrar modal
     closePolizaEls.forEach(el => el.onclick = () => { modalPoliza.classList.remove('is-open'); });
@@ -243,6 +249,7 @@
         formPoliza.vencimiento.value = tds[6].textContent.trim();
         submitPolizaBtn.textContent = 'Guardar Cambios';
         modalPolizaTitle.textContent = 'Editar Póliza';
+        deletePolizaBtn.style.display = 'block';
         modalPoliza.classList.add('is-open');
       });
     });
