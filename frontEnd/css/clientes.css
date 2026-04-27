@@ -154,7 +154,24 @@
 .icon-btn {
   border: none;
   background: transparent;
-  font-size: 1.05rem;
+  font-size: 2.05rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+.icon-btn + .btn-inmueble {
+  margin-left: 17px;
+}
+
+.btn-inmueble {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+}
+.btn-inmueble {
+  border: none;
+  background: transparent;
+  font-size: 2.05rem;
   color: var(--primary);
   cursor: pointer;
 }

@@ -85,6 +85,57 @@
             </form>
           </div>
         </div>
+
+        <div class="modal" id="modalInmueble">
+  <div class="modal__backdrop" data-close-inmueble></div>
+
+  <div class="modal__dialog">
+    <button class="modal__close" type="button" data-close-inmueble>&times;</button>
+
+    <header class="modal__header">
+      <h2>Agregar Inmueble</h2>
+    </header>
+
+    <form class="modal__form" id="formInmueble">
+      <label class="modal__label">
+        Cliente
+        <input class="modal__input" type="text" name="cliente_nombre" readonly>
+      </label>
+
+      <label class="modal__label">
+        Tipo de inmueble
+        <select class="modal__input" name="inmueble_tipo" required>
+          <option value="">Seleccionar tipo</option>
+          <option value="Casa">Casa</option>
+          <option value="Departamento">Departamento</option>
+          <option value="Terreno">Terreno</option>
+          <option value="Local">Local</option>
+        </select>
+      </label>
+
+      <label class="modal__label">
+        Valor del inmueble
+        <input class="modal__input" type="number" name="inmueble_valor" min="0" required>
+      </label>
+
+      <label class="modal__label">
+        Póliza relacionada
+        <select class="modal__input" name="poliza_id" required>
+          <option value="">Seleccionar póliza</option>
+          <option value="ID_POLIZA_1">POL-2025-001</option>
+          <option value="ID_POLIZA_2">POL-2025-002</option>
+        </select>
+      </label>
+
+      <input type="hidden" name="cliente_id">
+
+      <div class="modal__actions">
+        <button type="button" class="modal__cancel" data-close-inmueble>Cancelar</button>
+        <button type="submit" class="modal__submit">Guardar Inmueble</button>
+      </div>
+    </form>
+  </div>
+</div>
       </header>
 
       <section class="search-box">
@@ -108,28 +159,28 @@
               <td>maria@email.com</td>
               <td>612 345 678</td>
               <td>2025-01-15</td>
-              <td class="actions"><button class="icon-btn">✎</button></td>
+              <td class="actions"><button class="icon-btn">✎</button> <button class="btn-inmueble">+</button></td>
             </tr>
             <tr>
               <td>Carlos Ramirez</td>
               <td>carlos@email.com</td>
               <td>611 987 654</td>
               <td>2024-12-10</td>
-              <td class="actions"><button class="icon-btn">✎</button></td>
+              <td class="actions"><button class="icon-btn">✎</button> <button class="btn-inmueble">+</button></td>
             </tr>
             <tr>
               <td>Ana Perez</td>
               <td>ana@email.com</td>
               <td>613 456 789</td>
               <td>2025-02-02</td>
-              <td class="actions"><button class="icon-btn">✎</button></td>
+                <td class="actions"><button class="icon-btn">✎</button> <button class="btn-inmueble">+</button></td>
             </tr>
             <tr>
               <td>Juan Lopez</td>
               <td>juan@email.com</td>
               <td>614 111 222</td>
               <td>2025-03-05</td>
-              <td class="actions"><button class="icon-btn">✎</button></td>
+                 <td class="actions"><button class="icon-btn">✎</button> <button class="btn-inmueble">+</button></td>
             </tr>
           </tbody>
         </table>
@@ -189,6 +240,44 @@
       }
     });
   </script>
+  <script>
+  const modalInmueble = document.getElementById('modalInmueble');
+  const formInmueble = document.getElementById('formInmueble');
+
+  document.querySelectorAll('.btn-inmueble').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tr = btn.closest('tr');
+      const nombreCliente = tr.children[0].textContent.trim();
+
+      formInmueble.cliente_nombre.value = nombreCliente;
+
+      // Por ahora dummy, cuando conectes backend aquí irá el _id real del cliente
+      formInmueble.cliente_id.value = 'ID_DEL_CLIENTE';
+
+      modalInmueble.classList.add('is-open');
+    });
+  });
+
+  document.querySelectorAll('[data-close-inmueble]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      modalInmueble.classList.remove('is-open');
+    });
+  });
+
+  formInmueble.addEventListener('submit', e => {
+    e.preventDefault();
+
+    console.log({
+      cliente_id: formInmueble.cliente_id.value,
+      poliza_id: formInmueble.poliza_id.value,
+      inmueble_tipo: formInmueble.inmueble_tipo.value,
+      inmueble_valor: formInmueble.inmueble_valor.value
+    });
+
+    modalInmueble.classList.remove('is-open');
+    formInmueble.reset();
+  });
+</script>
 </body>
 
 </html>

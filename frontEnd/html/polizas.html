@@ -60,7 +60,7 @@
             <header class="modal__header">
               <h2 id="nuevaPolizaTitle">Nueva Póliza</h2>
             </header>
-            <form class="modal__form" id="formNuevaPoliza">
+            <form class="modal__form" id="formNuevaPoliza" enctype="multipart/form-data">
               <div class="modal__row">
                 <label class="modal__label" style="flex:1;">
                   Cliente
@@ -109,6 +109,11 @@
               <label class="modal__label">
                 Fecha de Vencimiento
                 <input class="modal__input" type="text" name="vencimiento" placeholder="dd/mm/aaaa" required>
+              </label>
+
+              <label class="modal__label">
+                Documento PDF
+                <input class="modal__input" type="file" name="documento" accept="application/pdf">
               </label>
               <div class="modal__actions">
                 <button type="button" class="modal__delete" id="deletePolizaBtn">Eliminar</button>
