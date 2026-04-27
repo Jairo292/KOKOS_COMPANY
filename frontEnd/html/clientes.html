@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/sidebar.css">
   <link rel="stylesheet" href="../css/clientes.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <title>Clientes</title>
 </head>
 
 <body>
-
   <div class="layout">
-
     <aside class="sidebar">
       <div>
         <header class="sidebar-header">
@@ -40,7 +40,6 @@
       </section>
     </aside>
 
-
     <main class="main-content">
 
       <header class="page-header">
@@ -50,38 +49,42 @@
         </div>
 
         <button class="btn-primary" id="nuevoClienteBtn">+ Nuevo Cliente</button>
-          <!-- Modal Nuevo Cliente -->
-          <div class="modal" id="modalNuevoCliente">
-            <div class="modal__backdrop" data-close></div>
-            <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="nuevoClienteTitle">
-              <button class="modal__close" type="button" aria-label="Cerrar" data-close>&times;</button>
-              <header class="modal__header">
-                <h2 id="nuevoClienteTitle">Nuevo Cliente</h2>
-              </header>
-              <form class="modal__form" id="formNuevoCliente">
-                <label class="modal__label">
-                  Nombre Completo
-                  <input class="modal__input" type="text" name="nombre" placeholder="Ej: Juan Pérez" required>
-                </label>
-                <label class="modal__label">
-                  Email
-                  <input class="modal__input" type="email" name="email" placeholder="Ej: juan@example.com" required>
-                </label>
-                <label class="modal__label">
-                  Teléfono
-                  <input class="modal__input" type="text" name="telefono" placeholder="Ej: +34 600 123 456" required>
-                </label>
-                <label class="modal__label">
-                  Fecha de Registro
-                  <input class="modal__input" type="date" name="fecha" required value="2026-04-19">
-                </label>
-                <div class="modal__actions">
+        <!-- Modal Nuevo Cliente -->
+        <div class="modal" id="modalNuevoCliente">
+          <div class="modal__backdrop" data-close></div>
+          <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="nuevoClienteTitle">
+            <button class="modal__close" type="button" aria-label="Cerrar" data-close>&times;</button>
+            <header class="modal__header">
+              <h2 id="nuevoClienteTitle">Nuevo Cliente</h2>
+            </header>
+            <form class="modal__form" id="formNuevoCliente">
+              <label class="modal__label">
+                Nombre Completo
+                <input class="modal__input" type="text" name="nombre" placeholder="Ej: Juan Pérez" required>
+              </label>
+              <label class="modal__label">
+                Email
+                <input class="modal__input" type="email" name="email" placeholder="Ej: juan@example.com" required>
+              </label>
+              <label class="modal__label">
+                Teléfono
+                <input class="modal__input" type="text" name="telefono" placeholder="Ej: +34 600 123 456" required>
+              </label>
+              <label class="modal__label">
+                Fecha de Registro
+                <input class="modal__input" type="date" name="fecha" required value="2026-04-19">
+              </label>
+              <div class="modal__actions">
+                <button type="button" class="modal__delete" id="deleteBtn">Eliminar</button>
+
+                <div class="modal__actions-right">
                   <button type="button" class="modal__cancel" data-close>Cancelar</button>
-                  <button type="submit" class="modal__submit">Crear Cliente</button>
+                  <button type="submit" class="modal__submit">Guardar Cambios</button>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
+        </div>
       </header>
 
       <section class="search-box">
@@ -136,53 +139,53 @@
 
   </div>
 
-<script src="../js/main.js"></script>
-<script>
-// Modal Nuevo Cliente/Editar Cliente
-const modal = document.getElementById('modalNuevoCliente');
-const openBtn = document.getElementById('nuevoClienteBtn');
-const closeEls = modal.querySelectorAll('[data-close]');
-const form = document.getElementById('formNuevoCliente');
-const submitBtn = form.querySelector('.modal__submit');
-const modalTitle = document.getElementById('nuevoClienteTitle');
+  <script src="../js/main.js"></script>
+  <script>
+    // Modal Nuevo Cliente/Editar Cliente
+    const modal = document.getElementById('modalNuevoCliente');
+    const openBtn = document.getElementById('nuevoClienteBtn');
+    const closeEls = modal.querySelectorAll('[data-close]');
+    const form = document.getElementById('formNuevoCliente');
+    const submitBtn = form.querySelector('.modal__submit');
+    const modalTitle = document.getElementById('nuevoClienteTitle');
 
-// Abrir modal para nuevo cliente
-openBtn.onclick = () => {
-  form.reset();
-  submitBtn.textContent = 'Crear Cliente';
-  modalTitle.textContent = 'Nuevo Cliente';
-  modal.classList.add('is-open');
-};
+    // Abrir modal para nuevo cliente
+    openBtn.onclick = () => {
+      form.reset();
+      submitBtn.textContent = 'Crear Cliente';
+      modalTitle.textContent = 'Nuevo Cliente';
+      modal.classList.add('is-open');
+    };
 
-// Cerrar modal
-closeEls.forEach(el => el.onclick = () => { modal.classList.remove('is-open'); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('is-open'); });
+    // Cerrar modal
+    closeEls.forEach(el => el.onclick = () => { modal.classList.remove('is-open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('is-open'); });
 
-// Abrir modal para editar cliente
-document.querySelectorAll('.icon-btn').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    const tr = btn.closest('tr');
-    const tds = tr.querySelectorAll('td');
-    // Llenar el formulario con los datos de la fila
-    form.nombre.value = tds[0].textContent.trim();
-    form.email.value = tds[1].textContent.trim();
-    form.telefono.value = tds[2].textContent.trim();
-    form.fecha.value = tds[3].textContent.trim();
-    submitBtn.textContent = 'Guardar Cambios';
-    modalTitle.textContent = 'Editar Cliente';
-    modal.classList.add('is-open');
-  });
-});
+    // Abrir modal para editar cliente
+    document.querySelectorAll('.icon-btn').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        const tr = btn.closest('tr');
+        const tds = tr.querySelectorAll('td');
+        // Llenar el formulario con los datos de la fila
+        form.nombre.value = tds[0].textContent.trim();
+        form.email.value = tds[1].textContent.trim();
+        form.telefono.value = tds[2].textContent.trim();
+        form.fecha.value = tds[3].textContent.trim();
+        submitBtn.textContent = 'Guardar Cambios';
+        modalTitle.textContent = 'Editar Cliente';
+        modal.classList.add('is-open');
+      });
+    });
 
-// Al cerrar, restaurar a modo nuevo
-modal.addEventListener('transitionend', function() {
-  if (!modal.classList.contains('is-open')) {
-    form.reset();
-    submitBtn.textContent = 'Crear Cliente';
-    modalTitle.textContent = 'Nuevo Cliente';
-  }
-});
-</script>
+    // Al cerrar, restaurar a modo nuevo
+    modal.addEventListener('transitionend', function () {
+      if (!modal.classList.contains('is-open')) {
+        form.reset();
+        submitBtn.textContent = 'Crear Cliente';
+        modalTitle.textContent = 'Nuevo Cliente';
+      }
+    });
+  </script>
 </body>
 
 </html>
