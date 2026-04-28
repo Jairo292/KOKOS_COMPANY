@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="vencimiento-meta">
                                     <p class="days">Vence en 23 días</p>
-                                    <button>Enviar recordatorio</button>
+                                    <button class="btn-recordatorio">Enviar recordatorio</button>
                                 </div>
                             </article>
                         </li>
@@ -117,7 +117,7 @@
                                 </div>
                                 <div class="vencimiento-meta">
                                     <p class="days">Vence en 24 días</p>
-                                    <button>Enviar recordatorio</button>
+                                    <button class="btn-recordatorio">Enviar recordatorio</button>
                                 </div>
                             </article>
                         </li>
@@ -126,6 +126,7 @@
             </section>
         </main>
     </div>
+    <div id="toast" class="toast">Recordatorio enviado con éxito</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -153,5 +154,20 @@
         }
     });
 </script>
+<script>
+    const botones = document.querySelectorAll('.btn-recordatorio');
+    const toast = document.getElementById('toast');
 
+    botones.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Mostrar popup
+            toast.classList.add('show');
+
+            // Ocultarlo después de 2.5s
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        });
+    });
+</script>
 </html>
