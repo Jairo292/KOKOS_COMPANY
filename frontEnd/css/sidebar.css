@@ -30,8 +30,6 @@ ul {
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: 290px 1fr;
   min-height: 100vh;
 }
 
@@ -41,6 +39,11 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 290px;
+  height: 100vh;
 }
 
 .sidebar-header {
@@ -133,4 +136,21 @@ ul {
   .layout {
     grid-template-columns: 1fr;
   }
+}
+.layout {
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 290px;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.main-content {
+  margin-left: 290px;
+  width: calc(100% - 290px);
 }

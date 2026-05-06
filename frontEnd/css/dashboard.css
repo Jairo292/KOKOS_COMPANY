@@ -191,11 +191,14 @@ button {
 
 @media (max-width: 768px) {
   .dashboard-layout {
-    grid-template-columns: 1fr;
+  min-height: 100vh;
   }
 
   .main-content {
     padding: 24px 18px;
+      margin-left: 290px;
+  min-height: 100vh;
+  overflow-y: auto;
   }
 
   .main-header h2 {

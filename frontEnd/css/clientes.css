@@ -321,7 +321,7 @@ input {
 
 @media (max-width: 768px) {
   .layout {
-    grid-template-columns: 1fr;
+  min-height: 100vh;
   }
 
   .main-content {
