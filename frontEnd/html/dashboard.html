@@ -5,31 +5,37 @@
     <meta charset="utf-8">
     <title>KOKOS — Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="layout">
         <aside class="sidebar">
-            <header class="sidebar-header">
-                <h1>KOKOS</h1>
-                <p>Gestión de Seguros</p>
-            </header>
+            <div>
+                <header class="sidebar-header">
+                    <h2>KOKOS</h2>
+                    <p>Gestión de Seguros</p>
+                </header>
 
-            <nav class="sidebar-nav" aria-label="Menú principal">
-                <ul>
-                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
-                    <li><a href="clientes.html">Clientes</a></li>
-                    <li><a href="polizas.html">Pólizas</a></li>
-                </ul>
-            </nav>
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                        <li><a href="clientes.html">Clientes</a></li>
+                        <li><a href="polizas.html">Polizas</a></li>
+                    </ul>
+                </nav>
+            </div>
 
             <section class="sidebar-profile">
                 <div class="profile-avatar">AG</div>
-                <div>
+
+                <div class="profile-info">
                     <h2>Agente Demo</h2>
                     <p>agente@kokos.com</p>
-                    <a href="index.html">Cerrar sesión</a></li>
+
+                    <a href="index.html" class="logout-link">Cerrar sesión</a>
                 </div>
             </section>
         </aside>
@@ -98,7 +104,7 @@
                                 </div>
                                 <div class="vencimiento-meta">
                                     <p class="days">Vence en 23 días</p>
-                                    <button>Enviar recordatorio</button>
+                                    <button class="btn-recordatorio">Enviar recordatorio</button>
                                 </div>
                             </article>
                         </li>
@@ -111,7 +117,7 @@
                                 </div>
                                 <div class="vencimiento-meta">
                                     <p class="days">Vence en 24 días</p>
-                                    <button>Enviar recordatorio</button>
+                                    <button class="btn-recordatorio">Enviar recordatorio</button>
                                 </div>
                             </article>
                         </li>
@@ -120,35 +126,48 @@
             </section>
         </main>
     </div>
-
-    <footer class="footer">
-        <p>© 2026 KOKOS — Sistema de Gestión de Seguros</p>
-    </footer>
+    <div id="toast" class="toast">Recordatorio enviado con éxito</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  const ctx = document.getElementById('policyChart');
+    const ctx = document.getElementById('policyChart');
 
-  new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Vida', 'Automoviles', 'Propiedades', 'Gastos medicos'],
-      datasets: [{
-        data: [25, 25, 25, 25],
-        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
-        borderColor: '#ffffff',
-        borderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          position: 'bottom'
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Vida', 'Automoviles', 'Propiedades', 'Gastos medicos'],
+            datasets: [{
+                data: [25, 25, 25, 25],
+                backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
         }
-      }
-    }
-  });
+    });
+</script>
+<script>
+    const botones = document.querySelectorAll('.btn-recordatorio');
+    const toast = document.getElementById('toast');
+
+    botones.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Mostrar popup
+            toast.classList.add('show');
+
+            // Ocultarlo después de 2.5s
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        });
+    });
 </script>
 </html>

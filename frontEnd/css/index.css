@@ -1,35 +1,26 @@
 :root {
-  --color-bg: #ffffff;
-  --color-text: #0a0a0a;
-
+  /* Shared visual tokens (aligned to dashboard) */
+  --color-bg: #f3f4f6;
+  --color-text: #0f172a;
   --color-surface: #ffffff;
-  --color-surface-text: #0a0a0a;
-  --color-primary: #030213;
-  --color-primary-contrast: #ffffff;
+  --color-muted-text: #64748b;
+  --color-border: rgba(0,0,0,0.08);
 
-  --color-secondary: #f2f3f7;
-  --color-secondary-text: #030213;
-  --color-muted: #ececf0;
-  --color-muted-text: #717182;
-
-  --color-accent: #e9ebef;
-  --color-accent-text: #030213;
-
-  --color-danger: #d4183d;
-  --color-danger-contrast: #ffffff;
-
-  --color-border: rgba(0,0,0,0.1);
-  --color-input-bg: #f3f3f5;
-
-  --radius-md: 10px;
-   --bg: var(--color-bg);
-  --text: var(--color-text);
-  --primary: var(--color-primary);
-  --muted: var(--color-muted-text);
-
-  --primary-2: #0e2668;    
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
   --primary-20: #1d4ed8;
+  --primary-2: #0e2668;
+
+  --success: #16a34a;
+  --warning: #ea580c;
+  --color-danger: #d4183d;
+
+  --surface: var(--color-surface);
+  --bg: var(--color-bg);
+  --text: var(--color-text);
+  --muted: var(--color-muted-text);
   --border: var(--color-border);
+
   --container: 1100px;
 
   --radius: 18px;

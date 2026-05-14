@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/polizas.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Pólizas</title>
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+      <div>
+        <header class="sidebar-header">
+          <h2>KOKOS</h2>
+          <p>Gestión de Seguros</p>
+        </header>
+
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="clientes.html">Clientes</a></li>
+            <li><a href="polizas.html" class="active">Polizas</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <section class="sidebar-profile">
+        <div class="profile-avatar">AG</div>
+
+        <div class="profile-info">
+          <h2>Agente Demo</h2>
+          <p>agente@kokos.com</p>
+
+          <a href="index.html" class="logout-link">Cerrar sesión</a>
+        </div>
+      </section>
+    </aside>
+
+
+    <main class="main-content">
+
+      <header class="page-header">
+        <div>
+          <h1>Pólizas</h1>
+          <p>Gestiona todas las pólizas de seguros</p>
+        </div>
+
+        <button class="btn-primary new-btn" id="nuevaPolizaBtn">+ Nueva Póliza</button>
+        <!-- Modal Nueva Póliza -->
+        <div class="modal" id="modalNuevaPoliza">
+          <div class="modal__backdrop" data-close></div>
+          <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="nuevaPolizaTitle">
+            <button class="modal__close" type="button" aria-label="Cerrar" data-close>&times;</button>
+            <header class="modal__header">
+              <h2 id="nuevaPolizaTitle">Nueva Póliza</h2>
+            </header>
+            <form class="modal__form" id="formNuevaPoliza" enctype="multipart/form-data">
+              <div class="modal__row">
+                <label class="modal__label" style="flex:1;">
+                  Cliente
+                  <select class="modal__input" name="cliente" required>
+                    <option value="">Seleccionar cliente</option>
+                    <option>María García López</option>
+                    <option>Carlos Ramírez</option>
+                    <option>Ana Perez</option>
+                    <option>Juan Lopez</option>
+                  </select>
+                </label>
+                <label class="modal__label" style="flex:1;">
+                  Número de Póliza
+                  <input class="modal__input" type="text" name="numero" placeholder="Ej: POL-2026-001" required>
+                </label>
+              </div>
+              <div class="modal__row">
+                <label class="modal__label" style="flex:1;">
+                  Tipo de Seguro
+                  <select class="modal__input" name="tipo" required>
+                    <option>Vida</option>
+                    <option>Auto</option>
+                    <option>Hogar</option>
+                    <option>Salud</option>
+                  </select>
+                </label>
+                <label class="modal__label" style="flex:1;">
+                  Estado
+                  <select class="modal__input" name="estado" required>
+                    <option>Activa</option>
+                    <option>Pendiente</option>
+                    <option>Cancelada</option>
+                  </select>
+                </label>
+              </div>
+              <div class="modal__row">
+                <label class="modal__label" style="flex:1;">
+                  Prima Mensual ($)
+                  <input class="modal__input" type="number" min="0" name="prima" value="0" required>
+                </label>
+                <label class="modal__label" style="flex:1;">
+                  Fecha de Inicio
+                  <input class="modal__input" type="date" name="inicio" required value="2026-04-19">
+                </label>
+              </div>
+              <label class="modal__label">
+                Fecha de Vencimiento
+                <input class="modal__input" type="text" name="vencimiento" placeholder="dd/mm/aaaa" required>
+              </label>
+
+              <label class="modal__label">
+                Documento PDF
+                <input class="modal__input" type="file" name="documento" accept="application/pdf">
+              </label>
+              <div class="modal__actions">
+                <button type="button" class="modal__delete" id="deletePolizaBtn">Eliminar</button>
+
+                <div class="modal__actions-right">
+                  <button type="button" class="modal__cancel" data-close>Cancelar</button>
+                  <button type="submit" class="modal__submit">Guardar Cambios</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </header>
+
+      <section class="search-box">
+        <input class="search-input" type="text" placeholder="Buscar pólizas por número, tipo o cliente...">
+      </section>
+
+      <section class="table-card">
+        <table class="polizas-table">
+          <thead>
+            <tr>
+              <th>N° Póliza</th>
+              <th>Cliente</th>
+              <th>Tipo</th>
+              <th>Estado</th>
+              <th>Prima</th>
+              <th>Vencimiento</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>POL-2025-001</td>
+              <td>María García López</td>
+              <td><span class="badge-type vida">Vida</span></td>
+              <td><span class="badge-status activa">Activa</span></td>
+              <td>$1,500</td>
+              <td>2026-02-25</td>
+              <td class="actions"><button class="icon-btn">✎</button></td>
+            </tr>
+
+            <tr>
+              <td>POL-2025-002</td>
+              <td>José López Fernández</td>
+              <td><span class="badge-type auto">Auto</span></td>
+              <td><span class="badge-status activa">Activa</span></td>
+              <td>$850</td>
+              <td>2026-03-05</td>
+              <td class="actions"><button class="icon-btn">✎</button></td>
+            </tr>
+
+            <tr>
+              <td>POL-2025-003</td>
+              <td>Carlos Rodríguez Sánchez</td>
+              <td><span class="badge-type hogar">Hogar</span></td>
+              <td><span class="badge-status activa">Activa</span></td>
+              <td>$1,200</td>
+              <td>2026-03-10</td>
+              <td class="actions"><button class="icon-btn">✎</button></td>
+            </tr>
+
+            <tr>
+              <td>POL-2026-001</td>
+              <td>Laura Torres Ruiz</td>
+              <td><span class="badge-type auto">Auto</span></td>
+              <td><span class="badge-status pendiente">Pendiente</span></td>
+              <td>$950</td>
+              <td>2027-01-10</td>
+              <td class="actions"><button class="icon-btn">✎</button></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script>
+    // Modal Nueva/Editar Póliza
+    const modalPoliza = document.getElementById('modalNuevaPoliza');
+    const openPolizaBtn = document.getElementById('nuevaPolizaBtn');
+    const closePolizaEls = modalPoliza.querySelectorAll('[data-close]');
+    const formPoliza = document.getElementById('formNuevaPoliza');
+    const submitPolizaBtn = formPoliza.querySelector('.modal__submit');
+    const modalPolizaTitle = document.getElementById('nuevaPolizaTitle');
+    const deletePolizaBtn = document.getElementById('deletePolizaBtn');
+
+    // Abrir modal para nueva póliza
+    openPolizaBtn.onclick = () => {
+      formPoliza.reset();
+      submitPolizaBtn.textContent = 'Crear Póliza';
+      modalPolizaTitle.textContent = 'Nueva Póliza';
+      modalPoliza.classList.add('is-open');
+      deletePolizaBtn.style.display = 'none';
+    };
+    // Cerrar modal
+    closePolizaEls.forEach(el => el.onclick = () => { modalPoliza.classList.remove('is-open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modalPoliza.classList.remove('is-open'); });
+
+    // Abrir modal para editar póliza
+    document.querySelectorAll('.icon-btn').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        const tr = btn.closest('tr');
+        const tds = tr.querySelectorAll('td');
+        // Llenar el formulario con los datos de la fila
+        formPoliza.numero.value = tds[0].textContent.trim();
+        // Cliente
+        let cliente = tds[1].textContent.trim();
+        for (const opt of formPoliza.cliente.options) {
+          if (opt.textContent.trim() === cliente) {
+            formPoliza.cliente.value = opt.value || opt.textContent.trim();
+            break;
+          }
+        }
+        // Tipo
+        let tipo = tds[2].textContent.trim();
+        for (const opt of formPoliza.tipo.options) {
+          if (opt.textContent.trim() === tipo) {
+            formPoliza.tipo.value = opt.value || opt.textContent.trim();
+            break;
+          }
+        }
+        // Estado
+        let estado = tds[3].textContent.trim();
+        for (const opt of formPoliza.estado.options) {
+          if (opt.textContent.trim() === estado) {
+            formPoliza.estado.value = opt.value || opt.textContent.trim();
+            break;
+          }
+        }
+        // Prima
+        formPoliza.prima.value = tds[4].textContent.replace(/[^\d.]/g, '');
+        // Fecha de inicio (no está en la tabla, se deja vacía)
+        // Fecha de vencimiento
+        formPoliza.vencimiento.value = tds[6].textContent.trim();
+        submitPolizaBtn.textContent = 'Guardar Cambios';
+        modalPolizaTitle.textContent = 'Editar Póliza';
+        deletePolizaBtn.style.display = 'block';
+        modalPoliza.classList.add('is-open');
+      });
+    });
+
+    // Al cerrar, restaurar a modo nuevo
+    modalPoliza.addEventListener('transitionend', function () {
+      if (!modalPoliza.classList.contains('is-open')) {
+        formPoliza.reset();
+        submitPolizaBtn.textContent = 'Crear Póliza';
+        modalPolizaTitle.textContent = 'Nueva Póliza';
+      }
+    });
+  </script>
+</body>
+
+</html>

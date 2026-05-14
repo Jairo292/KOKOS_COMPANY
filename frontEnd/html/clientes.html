@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/sidebar.css">
   <link rel="stylesheet" href="../css/clientes.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <title>Clientes</title>
 </head>
 
 <body>
-
   <div class="layout">
-
     <aside class="sidebar">
       <div>
         <header class="sidebar-header">
@@ -40,7 +40,6 @@
       </section>
     </aside>
 
-
     <main class="main-content">
 
       <header class="page-header">
@@ -49,65 +48,236 @@
           <p>Gestiona tu cartera de clientes</p>
         </div>
 
-        <button class="btn-primary">+ Nuevo Cliente</button>
+        <button class="btn-primary" id="nuevoClienteBtn">+ Nuevo Cliente</button>
+        <!-- Modal Nuevo Cliente -->
+        <div class="modal" id="modalNuevoCliente">
+          <div class="modal__backdrop" data-close></div>
+          <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="nuevoClienteTitle">
+            <button class="modal__close" type="button" aria-label="Cerrar" data-close>&times;</button>
+            <header class="modal__header">
+              <h2 id="nuevoClienteTitle">Nuevo Cliente</h2>
+            </header>
+            <form class="modal__form" id="formNuevoCliente">
+              <label class="modal__label">
+                Nombre Completo
+                <input class="modal__input" type="text" name="nombre" placeholder="Ej: Juan Pérez" required>
+              </label>
+              <label class="modal__label">
+                Email
+                <input class="modal__input" type="email" name="email" placeholder="Ej: juan@example.com" required>
+              </label>
+              <label class="modal__label">
+                Teléfono
+                <input class="modal__input" type="text" name="telefono" placeholder="Ej: +34 600 123 456" required>
+              </label>
+              <label class="modal__label">
+                Fecha de Registro
+                <input class="modal__input" type="date" name="fecha" required value="2026-04-19">
+              </label>
+              <div class="modal__actions">
+                <button type="button" class="modal__delete" id="deleteBtn">Eliminar</button>
+
+                <div class="modal__actions-right">
+                  <button type="button" class="modal__cancel" data-close>Cancelar</button>
+                  <button type="submit" class="modal__submit">Guardar Cambios</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="modal" id="modalInmueble">
+  <div class="modal__backdrop" data-close-inmueble></div>
+
+  <div class="modal__dialog">
+    <button class="modal__close" type="button" data-close-inmueble>&times;</button>
+
+    <header class="modal__header">
+      <h2>Agregar Inmueble</h2>
+    </header>
+
+    <form class="modal__form" id="formInmueble">
+      <label class="modal__label">
+        Cliente
+        <input class="modal__input" type="text" name="cliente_nombre" readonly>
+      </label>
+
+      <label class="modal__label">
+        Tipo de inmueble
+        <select class="modal__input" name="inmueble_tipo" required>
+          <option value="">Seleccionar tipo</option>
+          <option value="Casa">Casa</option>
+          <option value="Departamento">Departamento</option>
+          <option value="Terreno">Terreno</option>
+          <option value="Local">Local</option>
+        </select>
+      </label>
+
+      <label class="modal__label">
+        Valor del inmueble
+        <input class="modal__input" type="number" name="inmueble_valor" min="0" required>
+      </label>
+
+      <label class="modal__label">
+        Póliza relacionada
+        <select class="modal__input" name="poliza_id" required>
+          <option value="">Seleccionar póliza</option>
+          <option value="ID_POLIZA_1">POL-2025-001</option>
+          <option value="ID_POLIZA_2">POL-2025-002</option>
+        </select>
+      </label>
+
+      <input type="hidden" name="cliente_id">
+
+      <div class="modal__actions">
+        <button type="button" class="modal__cancel" data-close-inmueble>Cancelar</button>
+        <button type="submit" class="modal__submit">Guardar Inmueble</button>
+      </div>
+    </form>
+  </div>
+</div>
       </header>
 
       <section class="search-box">
         <input type="text" placeholder="Buscar clientes por nombre o email...">
       </section>
 
-      <section class="clientes-grid">
-
-        <article class="cliente-card">
-          <div class="cliente-header">
-            <div class="avatar">MG</div>
-            <button class="editar"></button>
-          </div>
-          <h3>Maria Garcia Lopez</h3>
-          <p class="info"> maria@email.com</p>
-          <p class="info"> 612 345 678</p>
-          <p class="info"> Desde 2025-01-15</p>
-        </article>
-
-        <article class="cliente-card">
-          <div class="cliente-header">
-            <div class="avatar">CR</div>
-            <button class="editar"></button>
-          </div>
-          <h3>Carlos Ramirez</h3>
-          <p class="info"> carlos@email.com</p>
-          <p class="info"> 611 987 654</p>
-          <p class="info"> Desde 2024-12-10</p>
-        </article>
-
-        <article class="cliente-card">
-          <div class="cliente-header">
-            <div class="avatar">AP</div>
-            <button class="editar"></button>
-          </div>
-          <h3>Ana Perez</h3>
-          <p class="info"> ana@email.com</p>
-          <p class="info"> 613 456 789</p>
-          <p class="info"> Desde 2025-02-02</p>
-        </article>
-
-        <article class="cliente-card">
-          <div class="cliente-header">
-            <div class="avatar">JL</div>
-            <button class="editar"></button>
-          </div>
-          <h3>Juan Lopez</h3>
-          <p class="info"> juan@email.com</p>
-          <p class="info"> 614 111 222</p>
-          <p class="info"> Desde 2025-03-05</p>
-        </article>
-
+      <section class="table-card">
+        <table class="clientes-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Desde</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Maria Garcia Lopez</td>
+              <td>maria@email.com</td>
+              <td>612 345 678</td>
+              <td>2025-01-15</td>
+              <td class="actions"><button class="icon-btn">✎</button> <button class="btn-inmueble">+</button></td>
+            </tr>
+            <tr>
+              <td>Carlos Ramirez</td>
+              <td>carlos@email.com</td>
+              <td>611 987 654</td>
+              <td>2024-12-10</td>
+              <td class="actions"><button class="icon-btn">✎</button> <button class="btn-inmueble">+</button></td>
+            </tr>
+            <tr>
+              <td>Ana Perez</td>
+              <td>ana@email.com</td>
+              <td>613 456 789</td>
+              <td>2025-02-02</td>
+                <td class="actions"><button class="icon-btn">✎</button> <button class="btn-inmueble">+</button></td>
+            </tr>
+            <tr>
+              <td>Juan Lopez</td>
+              <td>juan@email.com</td>
+              <td>614 111 222</td>
+              <td>2025-03-05</td>
+                 <td class="actions"><button class="icon-btn">✎</button> <button class="btn-inmueble">+</button></td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
     </main>
 
   </div>
 
+  <script src="../js/main.js"></script>
+  <script>
+    // Modal Nuevo Cliente/Editar Cliente
+    const modal = document.getElementById('modalNuevoCliente');
+    const openBtn = document.getElementById('nuevoClienteBtn');
+    const closeEls = modal.querySelectorAll('[data-close]');
+    const form = document.getElementById('formNuevoCliente');
+    const submitBtn = form.querySelector('.modal__submit');
+    const modalTitle = document.getElementById('nuevoClienteTitle');
+    const deleteBtn = document.getElementById('deleteBtn');
+
+    // Abrir modal para nuevo cliente
+    openBtn.onclick = () => {
+      form.reset();
+      submitBtn.textContent = 'Crear Cliente';
+      modalTitle.textContent = 'Nuevo Cliente';
+        deleteBtn.style.display = 'none';
+      modal.classList.add('is-open');
+    };
+
+    // Cerrar modal
+    closeEls.forEach(el => el.onclick = () => { modal.classList.remove('is-open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('is-open'); });
+
+    // Abrir modal para editar cliente
+    document.querySelectorAll('.icon-btn').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        const tr = btn.closest('tr');
+        const tds = tr.querySelectorAll('td');
+        // Llenar el formulario con los datos de la fila
+        form.nombre.value = tds[0].textContent.trim();
+        form.email.value = tds[1].textContent.trim();
+        form.telefono.value = tds[2].textContent.trim();
+        form.fecha.value = tds[3].textContent.trim();
+        submitBtn.textContent = 'Guardar Cambios';
+        modalTitle.textContent = 'Editar Cliente';
+        deleteBtn.style.display = 'block';
+        modal.classList.add('is-open');
+      });
+    });
+
+    // Al cerrar, restaurar a modo nuevo
+    modal.addEventListener('transitionend', function () {
+      if (!modal.classList.contains('is-open')) {
+        form.reset();
+        submitBtn.textContent = 'Crear Cliente';
+        modalTitle.textContent = 'Nuevo Cliente';
+      }
+    });
+  </script>
+  <script>
+  const modalInmueble = document.getElementById('modalInmueble');
+  const formInmueble = document.getElementById('formInmueble');
+
+  document.querySelectorAll('.btn-inmueble').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tr = btn.closest('tr');
+      const nombreCliente = tr.children[0].textContent.trim();
+
+      formInmueble.cliente_nombre.value = nombreCliente;
+
+      // Por ahora dummy, cuando conectes backend aquí irá el _id real del cliente
+      formInmueble.cliente_id.value = 'ID_DEL_CLIENTE';
+
+      modalInmueble.classList.add('is-open');
+    });
+  });
+
+  document.querySelectorAll('[data-close-inmueble]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      modalInmueble.classList.remove('is-open');
+    });
+  });
+
+  formInmueble.addEventListener('submit', e => {
+    e.preventDefault();
+
+    console.log({
+      cliente_id: formInmueble.cliente_id.value,
+      poliza_id: formInmueble.poliza_id.value,
+      inmueble_tipo: formInmueble.inmueble_tipo.value,
+      inmueble_valor: formInmueble.inmueble_valor.value
+    });
+
+    modalInmueble.classList.remove('is-open');
+    formInmueble.reset();
+  });
+</script>
 </body>
 
 </html>
